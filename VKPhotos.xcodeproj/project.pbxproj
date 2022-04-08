@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FCE5BD23E5DB410C853B95E /* Pods_VKPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F28BF1E7471ED4D8F41EA7 /* Pods_VKPhotos.framework */; };
 		E247D571280095C4005F1827 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247D570280095C4005F1827 /* AppDelegate.swift */; };
 		E247D573280095C4005F1827 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247D572280095C4005F1827 /* SceneDelegate.swift */; };
-		E247D575280095C4005F1827 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247D574280095C4005F1827 /* ViewController.swift */; };
+		E247D575280095C4005F1827 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E247D574280095C4005F1827 /* AuthViewController.swift */; };
 		E247D57A280095C6005F1827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E247D579280095C6005F1827 /* Assets.xcassets */; };
 		E247D57D280095C6005F1827 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E247D57B280095C6005F1827 /* LaunchScreen.storyboard */; };
 		E247D585280095F3005F1827 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E247D584280095F3005F1827 /* .gitignore */; };
+		E2E9B14828009765006498BE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B14728009765006498BE /* .swiftlint.yml */; };
+		E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14B2800A3CA006498BE /* AuthService.swift */; };
+		E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14D2800A63C006498BE /* DebugOptions.swift */; };
+		E2E9B1502800A713006498BE /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B14F2800A713006498BE /* AuthViewController.xib */; };
+		E2E9B1562800B4BA006498BE /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B1542800B4BA006498BE /* PhotosViewController.swift */; };
+		E2E9B1572800B4BA006498BE /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B1552800B4BA006498BE /* PhotosViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51600C7BA76B8CE86BBB017C /* Pods-VKPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKPhotos.release.xcconfig"; path = "Target Support Files/Pods-VKPhotos/Pods-VKPhotos.release.xcconfig"; sourceTree = "<group>"; };
+		A466E9F4B6306BEF776DA0BF /* Pods-VKPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKPhotos.debug.xcconfig"; path = "Target Support Files/Pods-VKPhotos/Pods-VKPhotos.debug.xcconfig"; sourceTree = "<group>"; };
+		C6F28BF1E7471ED4D8F41EA7 /* Pods_VKPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E247D56D280095C4005F1827 /* VKPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E247D570280095C4005F1827 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E247D572280095C4005F1827 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E247D574280095C4005F1827 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E247D574280095C4005F1827 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		E247D579280095C6005F1827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E247D57C280095C6005F1827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E247D57E280095C6005F1827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E247D584280095F3005F1827 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E2E9B14728009765006498BE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E2E9B14B2800A3CA006498BE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E2E9B14D2800A63C006498BE /* DebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOptions.swift; sourceTree = "<group>"; };
+		E2E9B14F2800A713006498BE /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		E2E9B1542800B4BA006498BE /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		E2E9B1552800B4BA006498BE /* PhotosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,18 +47,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCE5BD23E5DB410C853B95E /* Pods_VKPhotos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AED065C86D1C66FF7C677FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A466E9F4B6306BEF776DA0BF /* Pods-VKPhotos.debug.xcconfig */,
+				51600C7BA76B8CE86BBB017C /* Pods-VKPhotos.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ACA9BE6E9F4FA2E3F3967B51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6F28BF1E7471ED4D8F41EA7 /* Pods_VKPhotos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E247D564280095C4005F1827 = {
 			isa = PBXGroup;
 			children = (
+				E2E9B14728009765006498BE /* .swiftlint.yml */,
 				E247D584280095F3005F1827 /* .gitignore */,
 				E247D56F280095C4005F1827 /* VKPhotos */,
 				E247D56E280095C4005F1827 /* Products */,
+				0AED065C86D1C66FF7C677FA /* Pods */,
+				ACA9BE6E9F4FA2E3F3967B51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +96,49 @@
 			children = (
 				E247D570280095C4005F1827 /* AppDelegate.swift */,
 				E247D572280095C4005F1827 /* SceneDelegate.swift */,
-				E247D574280095C4005F1827 /* ViewController.swift */,
+				E2E9B1522800B483006498BE /* Helpers */,
+				E2E9B14A2800A3B9006498BE /* Services */,
+				E2E9B1512800B46C006498BE /* AuthModule */,
+				E2E9B1532800B49C006498BE /* PhotosModule */,
 				E247D579280095C6005F1827 /* Assets.xcassets */,
 				E247D57B280095C6005F1827 /* LaunchScreen.storyboard */,
 				E247D57E280095C6005F1827 /* Info.plist */,
 			);
 			path = VKPhotos;
+			sourceTree = "<group>";
+		};
+		E2E9B14A2800A3B9006498BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E2E9B14B2800A3CA006498BE /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E2E9B1512800B46C006498BE /* AuthModule */ = {
+			isa = PBXGroup;
+			children = (
+				E247D574280095C4005F1827 /* AuthViewController.swift */,
+				E2E9B14F2800A713006498BE /* AuthViewController.xib */,
+			);
+			path = AuthModule;
+			sourceTree = "<group>";
+		};
+		E2E9B1522800B483006498BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E2E9B14D2800A63C006498BE /* DebugOptions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E2E9B1532800B49C006498BE /* PhotosModule */ = {
+			isa = PBXGroup;
+			children = (
+				E2E9B1542800B4BA006498BE /* PhotosViewController.swift */,
+				E2E9B1552800B4BA006498BE /* PhotosViewController.xib */,
+			);
+			path = PhotosModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +148,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E247D581280095C6005F1827 /* Build configuration list for PBXNativeTarget "VKPhotos" */;
 			buildPhases = (
+				E6253C29BDC505AC42C46474 /* [CP] Check Pods Manifest.lock */,
 				E247D569280095C4005F1827 /* Sources */,
 				E247D56A280095C4005F1827 /* Frameworks */,
 				E247D56B280095C4005F1827 /* Resources */,
+				F83FF7B7AB09221A7300832C /* [CP] Embed Pods Frameworks */,
+				E2E9B14928009821006498BE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,7 +202,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E9B14828009765006498BE /* .swiftlint.yml in Resources */,
 				E247D57D280095C6005F1827 /* LaunchScreen.storyboard in Resources */,
+				E2E9B1502800A713006498BE /* AuthViewController.xib in Resources */,
+				E2E9B1572800B4BA006498BE /* PhotosViewController.xib in Resources */,
 				E247D585280095F3005F1827 /* .gitignore in Resources */,
 				E247D57A280095C6005F1827 /* Assets.xcassets in Resources */,
 			);
@@ -133,14 +213,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E2E9B14928009821006498BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		E6253C29BDC505AC42C46474 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VKPhotos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F83FF7B7AB09221A7300832C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VKPhotos/Pods-VKPhotos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VKPhotos/Pods-VKPhotos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKPhotos/Pods-VKPhotos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E247D569280095C4005F1827 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E247D575280095C4005F1827 /* ViewController.swift in Sources */,
+				E247D575280095C4005F1827 /* AuthViewController.swift in Sources */,
 				E247D571280095C4005F1827 /* AppDelegate.swift in Sources */,
 				E247D573280095C4005F1827 /* SceneDelegate.swift in Sources */,
+				E2E9B1562800B4BA006498BE /* PhotosViewController.swift in Sources */,
+				E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */,
+				E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +418,7 @@
 		};
 		E247D582280095C6005F1827 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A466E9F4B6306BEF776DA0BF /* Pods-VKPhotos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -286,10 +429,9 @@
 				INFOPLIST_FILE = VKPhotos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,6 +448,7 @@
 		};
 		E247D583280095C6005F1827 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51600C7BA76B8CE86BBB017C /* Pods-VKPhotos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -316,10 +459,9 @@
 				INFOPLIST_FILE = VKPhotos/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
