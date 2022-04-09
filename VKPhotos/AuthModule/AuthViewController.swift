@@ -6,26 +6,21 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
     
-    var authService: AuthService?
-    
-    init(authService: AuthService) {
-        super.init(nibName: nil, bundle: nil)
-        self.authService = authService
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    @IBOutlet private weak var label: UILabel?
+    private var authService: AuthService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        label?.text = "Mobile Up\nGallery"
+        authService = AuthService.shared
     }
 
     @IBAction func enterVKButtonTapped(_ sender: Any) {
-        authService?.wakeUpSession()
+        authService?.startAuthorization()
     }
 }
