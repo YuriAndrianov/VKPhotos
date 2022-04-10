@@ -14,12 +14,18 @@
 		E247D57A280095C6005F1827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E247D579280095C6005F1827 /* Assets.xcassets */; };
 		E247D57D280095C6005F1827 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E247D57B280095C6005F1827 /* LaunchScreen.storyboard */; };
 		E247D585280095F3005F1827 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E247D584280095F3005F1827 /* .gitignore */; };
+		E26D8CE12801C16D00159AD8 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D8CE02801C16D00159AD8 /* PhotoResponse.swift */; };
+		E26D8CE32801F1CC00159AD8 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D8CE22801F1CC00159AD8 /* PhotoImageView.swift */; };
+		E29D3BE928019B56001E3B87 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3BE828019B56001E3B87 /* NetworkService.swift */; };
+		E29D3BEB28019DED001E3B87 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3BEA28019DED001E3B87 /* API.swift */; };
+		E29D3BED2801B436001E3B87 /* PhotoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D3BEC2801B436001E3B87 /* PhotoFetcher.swift */; };
+		E2A7AB5C28020037009F5445 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7AB5A28020037009F5445 /* PhotoCollectionViewCell.swift */; };
+		E2A7AB5D28020037009F5445 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A7AB5B28020037009F5445 /* PhotoCollectionViewCell.xib */; };
 		E2E9B14828009765006498BE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B14728009765006498BE /* .swiftlint.yml */; };
 		E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14B2800A3CA006498BE /* AuthService.swift */; };
 		E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14D2800A63C006498BE /* DebugOptions.swift */; };
 		E2E9B1502800A713006498BE /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B14F2800A713006498BE /* AuthViewController.xib */; };
 		E2E9B1562800B4BA006498BE /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B1542800B4BA006498BE /* PhotosViewController.swift */; };
-		E2E9B1572800B4BA006498BE /* PhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B1552800B4BA006498BE /* PhotosViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +40,18 @@
 		E247D57C280095C6005F1827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E247D57E280095C6005F1827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E247D584280095F3005F1827 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E26D8CE02801C16D00159AD8 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		E26D8CE22801F1CC00159AD8 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		E29D3BE828019B56001E3B87 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E29D3BEA28019DED001E3B87 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E29D3BEC2801B436001E3B87 /* PhotoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFetcher.swift; sourceTree = "<group>"; };
+		E2A7AB5A28020037009F5445 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2A7AB5B28020037009F5445 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E2E9B14728009765006498BE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E2E9B14B2800A3CA006498BE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E2E9B14D2800A63C006498BE /* DebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOptions.swift; sourceTree = "<group>"; };
 		E2E9B14F2800A713006498BE /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		E2E9B1542800B4BA006498BE /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		E2E9B1552800B4BA006498BE /* PhotosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,7 @@
 				E247D570280095C4005F1827 /* AppDelegate.swift */,
 				E247D572280095C4005F1827 /* SceneDelegate.swift */,
 				E2E9B1522800B483006498BE /* Helpers */,
+				E29D3BEE2801BE74001E3B87 /* Models */,
 				E2E9B14A2800A3B9006498BE /* Services */,
 				E2E9B1512800B46C006498BE /* AuthModule */,
 				E2E9B1532800B49C006498BE /* PhotosModule */,
@@ -107,10 +120,29 @@
 			path = VKPhotos;
 			sourceTree = "<group>";
 		};
+		E29D3BEE2801BE74001E3B87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E26D8CE02801C16D00159AD8 /* PhotoResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E2A7AB5E2802BD1C009F5445 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E2A7AB5A28020037009F5445 /* PhotoCollectionViewCell.swift */,
+				E2A7AB5B28020037009F5445 /* PhotoCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E2E9B14A2800A3B9006498BE /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E2E9B14B2800A3CA006498BE /* AuthService.swift */,
+				E29D3BE828019B56001E3B87 /* NetworkService.swift */,
+				E29D3BEC2801B436001E3B87 /* PhotoFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -127,7 +159,9 @@
 		E2E9B1522800B483006498BE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E29D3BEA28019DED001E3B87 /* API.swift */,
 				E2E9B14D2800A63C006498BE /* DebugOptions.swift */,
+				E26D8CE22801F1CC00159AD8 /* PhotoImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -136,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E9B1542800B4BA006498BE /* PhotosViewController.swift */,
-				E2E9B1552800B4BA006498BE /* PhotosViewController.xib */,
+				E2A7AB5E2802BD1C009F5445 /* Cell */,
 			);
 			path = PhotosModule;
 			sourceTree = "<group>";
@@ -205,7 +239,7 @@
 				E2E9B14828009765006498BE /* .swiftlint.yml in Resources */,
 				E247D57D280095C6005F1827 /* LaunchScreen.storyboard in Resources */,
 				E2E9B1502800A713006498BE /* AuthViewController.xib in Resources */,
-				E2E9B1572800B4BA006498BE /* PhotosViewController.xib in Resources */,
+				E2A7AB5D28020037009F5445 /* PhotoCollectionViewCell.xib in Resources */,
 				E247D585280095F3005F1827 /* .gitignore in Resources */,
 				E247D57A280095C6005F1827 /* Assets.xcassets in Resources */,
 			);
@@ -280,9 +314,15 @@
 				E247D575280095C4005F1827 /* AuthViewController.swift in Sources */,
 				E247D571280095C4005F1827 /* AppDelegate.swift in Sources */,
 				E247D573280095C4005F1827 /* SceneDelegate.swift in Sources */,
+				E26D8CE12801C16D00159AD8 /* PhotoResponse.swift in Sources */,
+				E26D8CE32801F1CC00159AD8 /* PhotoImageView.swift in Sources */,
+				E2A7AB5C28020037009F5445 /* PhotoCollectionViewCell.swift in Sources */,
 				E2E9B1562800B4BA006498BE /* PhotosViewController.swift in Sources */,
 				E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */,
+				E29D3BED2801B436001E3B87 /* PhotoFetcher.swift in Sources */,
 				E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */,
+				E29D3BEB28019DED001E3B87 /* API.swift in Sources */,
+				E29D3BE928019B56001E3B87 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

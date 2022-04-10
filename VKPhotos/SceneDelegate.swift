@@ -44,7 +44,9 @@ extension SceneDelegate: AuthServiceDelegate {
     }
     
     func authorizationDidFinish() {
-        let photosVC = PhotosViewController()
+        let networkService = NetworkService()
+        let photoFetcher = PhotoFetcher(networkService: networkService)
+        let photosVC = PhotosViewController(photoFetcher: photoFetcher)
         let navVC = UINavigationController(rootViewController: photosVC)
         window?.rootViewController = navVC
     }
