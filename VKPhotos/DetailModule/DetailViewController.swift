@@ -98,12 +98,10 @@ final class DetailViewController: UIViewController {
         guard let photoItems = photoItems,
               let id = id,
               let idIndex = photoItems.firstIndex(where: { $0.id == id }) else { return }
-        
         let selectedIndexPath = IndexPath(row: idIndex, section: 0)
         
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: true)
-        }
+        collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        collectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: true)
     }
     
     private func setPhotoImage() {
@@ -129,6 +127,7 @@ extension DetailViewController: UICollectionViewDelegate {
         guard let item = photoItems?[indexPath.row] else { return }
         id = item.id
         photoImage.setImage(from: item.url)
+        scrollToSelectedPhoto()
     }
 
 }
@@ -153,6 +152,7 @@ extension DetailViewController: UICollectionViewDataSource {
             let isSelected = item.id == id
             cell.configure(with: item, isSelected: isSelected)
         }
+        
         return cell
     }
     

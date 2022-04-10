@@ -116,13 +116,13 @@ final class PhotosViewController: UIViewController {
 // MARK: - collectionView delegate
 
 extension PhotosViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let detailedItem = photoItems[indexPath.row]
         
         let detailedVC = DetailViewController(photoItems: photoItems, id: detailedItem.id)
         navigationController?.pushViewController(detailedVC, animated: true)
-        
     }
    
 }

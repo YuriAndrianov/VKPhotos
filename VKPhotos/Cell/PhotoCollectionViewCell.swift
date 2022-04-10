@@ -10,7 +10,7 @@ import UIKit
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "cell"
-   
+    
     @IBOutlet private weak var imageView: PhotoImageView?
     
     override var isSelected: Bool {
@@ -24,13 +24,11 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
     func configure(with item: PhotoItem, isSelected: Bool) {
         let url = item.url
         imageView?.setImage(from: url)
-        DispatchQueue.main.async { [weak self] in
-            self?.isSelected = isSelected
-        }
+        self.isSelected = isSelected
     }
     
 }

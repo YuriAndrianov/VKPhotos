@@ -127,7 +127,6 @@
 		E29D3BEE2801BE74001E3B87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E2E9B14D2800A63C006498BE /* DebugOptions.swift */,
 				E26D8CE02801C16D00159AD8 /* PhotoResponse.swift */,
 			);
 			path = Models;
@@ -173,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E29D3BEA28019DED001E3B87 /* API.swift */,
+				E2E9B14D2800A63C006498BE /* DebugOptions.swift */,
 				E26D8CE22801F1CC00159AD8 /* PhotoImageView.swift */,
 			);
 			path = Helpers;
