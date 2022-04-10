@@ -6,13 +6,12 @@
 //
 
 import UIKit
-import VK_ios_sdk
 
 final class PhotosViewController: UIViewController {
     
-    private var urlStrings = [String]()
+    private var photoItems = [PhotoItem]()
     private var photoFetcher: PhotoFetching?
-   
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 2
@@ -41,26 +40,14 @@ final class PhotosViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         configureCollectionView()
-        getPhotoURLs()
+        getPhotoItems()
     }
     
     override func viewDidLayoutSubviews() {
         collectionView.frame = view.bounds
     }
-   
-    @objc private func logOutButtonTapped() {
-        let logOutAlertVC = UIAlertController(title: nil,
-                                              message: "Вы действительно хотите выйти?",
-                                              preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Да",
-                                          style: .default) { _ in AuthService.shared.endSession() }
-        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
-        
-        logOutAlertVC.addAction(confirmAction)
-        logOutAlertVC.addAction(cancelAction)
-        
-        present(logOutAlertVC, animated: true, completion: nil)
-    }
+    
+    // MARK: - Setup UI
     
     private func setupNavBar() {
         title = "Mobile Up Gallery"
@@ -82,14 +69,16 @@ final class PhotosViewController: UIViewController {
         collectionView.delaysContentTouches = false
     }
     
-    private func getPhotoURLs() {
-        photoFetcher?.getPhotoURLs({ [weak self] result in
+    // MARK: - Fetching photos
+    
+    private func getPhotoItems() {
+        photoFetcher?.getPhotoItems({ [weak self] result in
             guard let self = self else { return }
             
             switch result {
-            case .success(let urlStrings):
+            case .success(let items):
                 DispatchQueue.main.async {
-                    self.urlStrings = urlStrings
+                    self.photoItems = items
                     self.collectionView.reloadData()
                 }
             case .failure(let error):
@@ -98,6 +87,8 @@ final class PhotosViewController: UIViewController {
         })
     }
     
+    // MARK: - Helpers
+    
     private func showAlert(with error: Error) {
         let alertVC = UIAlertController(title: "Ошибка",
                                         message: error.localizedDescription,
@@ -105,13 +96,35 @@ final class PhotosViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-
+    
+    @objc private func logOutButtonTapped() {
+        let logOutAlertVC = UIAlertController(title: nil,
+                                              message: "Вы действительно хотите выйти?",
+                                              preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Да",
+                                          style: .default) { _ in AuthService.shared.endSession() }
+        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        
+        logOutAlertVC.addAction(confirmAction)
+        logOutAlertVC.addAction(cancelAction)
+        
+        present(logOutAlertVC, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - collectionView delegate
 
 extension PhotosViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let detailedItem = photoItems[indexPath.row]
+        
+        let detailedVC = DetailViewController(photoItems: photoItems, id: detailedItem.id)
+        navigationController?.pushViewController(detailedVC, animated: true)
+        
+    }
+   
 }
 
 // MARK: - collectionView datasource
@@ -119,7 +132,7 @@ extension PhotosViewController: UICollectionViewDelegate {
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return urlStrings.count
+        return photoItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -129,12 +142,12 @@ extension PhotosViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         
-        let urlString = urlStrings[indexPath.row]
-        cell.configure(with: urlString)
+        let item = photoItems[indexPath.row]
+        cell.configure(with: item, isSelected: false)
         
         return cell
     }
-
+    
 }
 
 // MARK: - collectionViewDelegateFlowLayout

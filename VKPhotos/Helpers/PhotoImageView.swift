@@ -7,9 +7,8 @@
 
 import UIKit
 
-class PhotoImageView: UIImageView {
-    
-    private let networkService = NetworkService()
+final class PhotoImageView: UIImageView {
+
     private let spinner = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
@@ -27,26 +26,46 @@ class PhotoImageView: UIImageView {
         spinner.style = .large
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
+    }
+    
+    override func layoutSubviews() {
         spinner.center = center
     }
     
-    func set(from url: String) {
+    func setImage(from url: String) {
         guard let url = URL(string: url) else { return }
         
-        networkService.request(from: url) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
-                    self.spinner.stopAnimating()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        // trying to get image from cache
+        if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)) {
+            self.image = UIImage(data: cachedResponse.data)
+            self.spinner.stopAnimating()
+            return
         }
         
+        // downloading image
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                if let data = data,
+                   let response = response {
+                    self.image = UIImage(data: data)
+                    self.cacheData(response: response, data: data) // saving to cache
+                    self.spinner.stopAnimating()
+                }
+            }
+        }.resume()
+    }
+    
+    private func cacheData(response: URLResponse, data: Data) {
+        guard let responseURL = response.url else { return }
+        let cachedResponse = CachedURLResponse(response: response, data: data)
+        URLCache.shared.storeCachedResponse(cachedResponse, for: URLRequest(url: responseURL))
     }
     
 }
