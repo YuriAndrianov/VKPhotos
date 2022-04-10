@@ -32,6 +32,11 @@ final class PhotoImageView: UIImageView {
         spinner.center = center
     }
     
+    func setImage(_ image: UIImage) {
+        self.image = image
+        self.spinner.stopAnimating()
+    }
+    
     func setImage(from url: String) {
         guard let url = URL(string: url) else { return }
         

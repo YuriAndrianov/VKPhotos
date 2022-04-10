@@ -47,7 +47,7 @@ final class PhotosViewController: UIViewController {
         collectionView.frame = view.bounds
     }
     
-    // MARK: - Setup UI
+    // MARK: - UI configuration
     
     private func setupNavBar() {
         title = "Mobile Up Gallery"

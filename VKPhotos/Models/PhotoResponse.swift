@@ -29,6 +29,10 @@ struct PhotoItem: Codable {
         return getProperSize().url
     }
     
+    var properSize: Size {
+        return getProperSize()
+    }
+    
     private func getProperSize() -> Size {
         if let sizeX = sizes.first(where: { $0.type == "x" }) {
             return sizeX
@@ -45,7 +49,7 @@ struct Size: Codable {
     
     var type: String
     var url: String
-    var width: Int
-    var height: Int
+    var width: Double
+    var height: Double
 
 }

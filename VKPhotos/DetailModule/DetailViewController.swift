@@ -11,11 +11,17 @@ final class DetailViewController: UIViewController {
     
     private var photoItems: [PhotoItem]?
     private var id: Int?
+    private var zoomingImageView: PhotoImageView?
+    private var startingFrame: CGRect?
+    private var blackBGView: UIView?
     
     private lazy var photoImage: PhotoImageView = {
         let iv = PhotoImageView(frame: .zero)
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
+        iv.isUserInteractionEnabled = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                       action: #selector(tapToZoomIn(_:))))
         return iv
     }()
     
@@ -61,7 +67,9 @@ final class DetailViewController: UIViewController {
         super.viewDidAppear(animated)
         scrollToSelectedPhoto()
     }
-
+    
+    // MARK: - UI configuration
+    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
@@ -69,7 +77,7 @@ final class DetailViewController: UIViewController {
         guard let photoItems = photoItems,
               let id = id,
               let chosenItem = photoItems.first(where: { $0.id == id }) else { return }
-
+        
         let interval = TimeInterval(chosenItem.date)
         let date = Date(timeIntervalSince1970: interval)
         
@@ -94,6 +102,21 @@ final class DetailViewController: UIViewController {
         ])
     }
     
+    private func setPhotoImage() {
+        view.addSubview(photoImage)
+        
+        guard let photoItems = photoItems,
+              let id = id,
+              let chosenItem = photoItems.first(where: { $0.id == id }) else { return }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.photoImage.setImage(from: chosenItem.url)
+        }
+    }
+    
+    // MARK: - Helpers
+    
     private func scrollToSelectedPhoto() {
         guard let photoItems = photoItems,
               let id = id,
@@ -104,19 +127,97 @@ final class DetailViewController: UIViewController {
         collectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: true)
     }
     
-    private func setPhotoImage() {
-        view.addSubview(photoImage)
-
-        guard let photoItems = photoItems,
+    // MARK: - Handle zooming and pinching
+    
+    @objc private func tapToZoomIn(_ sender: UITapGestureRecognizer) {
+        guard let viewToZoomIn = sender.view as? PhotoImageView,
+              let photoItems = photoItems,
               let id = id,
               let chosenItem = photoItems.first(where: { $0.id == id }) else { return }
         
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.photoImage.setImage(from: chosenItem.url)
+        let width = CGFloat(chosenItem.properSize.width)
+        let height = CGFloat(chosenItem.properSize.height)
+        
+        startingFrame = viewToZoomIn.superview?.convert(viewToZoomIn.frame, to: nil)
+        
+        guard let startingFrame = startingFrame,
+              let keyWindow = UIApplication
+                .shared
+                .connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .flatMap({ $0.windows })
+                .first(where: { $0.isKeyWindow }) else { return }
+        
+        blackBGView = UIView(frame: keyWindow.frame)
+        guard let blackBGView = blackBGView else { return }
+        blackBGView.backgroundColor = .label
+        blackBGView.alpha = 0
+        keyWindow.addSubview(blackBGView)
+        
+        zoomingImageView = PhotoImageView(frame: startingFrame)
+        
+        guard let image = viewToZoomIn.image,
+              let zoomingImageView = zoomingImageView else { return }
+        
+        zoomingImageView.setImage(image)
+        zoomingImageView.contentMode = .scaleAspectFit
+        zoomingImageView.isUserInteractionEnabled = true
+        zoomingImageView.clipsToBounds = true
+        zoomingImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToZoomOut(_:))))
+        zoomingImageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchToZoom(_:))))
+        keyWindow.addSubview(zoomingImageView)
+        
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseIn,
+                       animations: {
+            blackBGView.alpha = 1
+            
+            let newHeight = height / width * keyWindow.frame.width
+            zoomingImageView.frame = CGRect(x: 0,
+                                            y: 0,
+                                            width: keyWindow.frame.width,
+                                            height: newHeight)
+            
+            zoomingImageView.center = keyWindow.center
+        })
+    }
+    
+    @objc private func tapToZoomOut(_ sender: UITapGestureRecognizer) {
+        guard let viewToZoomOut = sender.view as? PhotoImageView,
+              let startingFrame = startingFrame else { return }
+        viewToZoomOut.clipsToBounds = true
+        
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseIn,
+                       animations: {
+            viewToZoomOut.frame = startingFrame
+            
+            guard let blackBGView = self.blackBGView else { return }
+            blackBGView.alpha = 0
+            viewToZoomOut.removeFromSuperview()
+        })
+    }
+    
+    @objc private func pinchToZoom(_ sender: UIPinchGestureRecognizer) {
+        guard let viewToZoomOut = sender.view as? PhotoImageView,
+              let startingFrame = startingFrame else { return }
+        
+        if sender.state == .changed {
+            let scale = sender.scale
+            viewToZoomOut.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: startingFrame.width * scale,
+                                         height: startingFrame.height * scale)
+            viewToZoomOut.center = view.center
         }
     }
-
+    
 }
 
 // MARK: - collectionView delegate
@@ -129,7 +230,7 @@ extension DetailViewController: UICollectionViewDelegate {
         photoImage.setImage(from: item.url)
         scrollToSelectedPhoto()
     }
-
+    
 }
 
 // MARK: - collectionView datasource
@@ -161,6 +262,7 @@ extension DetailViewController: UICollectionViewDataSource {
 // MARK: - collectionViewDelegateFlowLayout
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = 56
         let cellHeight = cellWidth
