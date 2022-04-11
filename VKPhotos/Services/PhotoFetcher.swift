@@ -34,7 +34,7 @@ final class PhotoFetcher: PhotoFetching {
                 DispatchQueue.main.async {
                     guard let decoded = self?.decodeJSON(type: PhotoResponseWrapped.self, from: data) else {
                         let unknownError = CustomError.unknownErr
-                        DispatchQueue.main.async { completion(.failure(unknownError)) }
+                        completion(.failure(unknownError))
                         return
                     }
                     completion(.success(decoded.response.items))
