@@ -22,16 +22,29 @@ final class PhotoFetcher: PhotoFetching {
     }
     
     func getPhotoItems(_ completion: @escaping (Result<[PhotoItem], Error>) -> Void) {
-        guard let url = API.url else { return }
+        guard let url = API.url else {
+            let unknownError = CustomError.unknownErr
+            DispatchQueue.main.async { completion(.failure(unknownError)) }
+            return
+        }
         
         networkService?.request(from: url, completion: { [weak self] result in
             switch result {
             case .success(let data):
-                guard let decoded = self?.decodeJSON(type: PhotoResponseWrapped.self, from: data) else { return }
-                completion(.success(decoded.response.items))
+                DispatchQueue.main.async {
+                    guard let decoded = self?.decodeJSON(type: PhotoResponseWrapped.self, from: data) else {
+                        let unknownError = CustomError.unknownErr
+                        DispatchQueue.main.async { completion(.failure(unknownError)) }
+                        return
+                    }
+                    completion(.success(decoded.response.items))
+                }
+                
             case .failure(let error):
-                print(error.localizedDescription)
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
             }
         })
     }

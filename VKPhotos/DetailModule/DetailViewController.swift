@@ -87,8 +87,8 @@ final class DetailViewController: UIViewController {
         let date = Date(timeIntervalSince1970: interval)
         
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru_RU")
-        formatter.dateFormat = "d MMM YYYY"
+        formatter.locale = Locale(identifier: "en_EN".localized())
+        formatter.dateFormat = "MMM d YYYY".localized()
         
         title = formatter.string(from: date)
     }
@@ -135,7 +135,7 @@ final class DetailViewController: UIViewController {
         let alertVC = UIAlertController(title: title,
                                         message: message,
                                         preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Ok".localized(), style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
     
@@ -147,19 +147,20 @@ final class DetailViewController: UIViewController {
         shareVC.completionWithItemsHandler = { [weak self] _, success, _, error in
             guard let self = self else { return }
             if let error = error {
-                self.showAlert(title: "Ошибка", message: error.localizedDescription)
+                self.showAlert(title: "Error".localized(), message: error.localizedDescription)
                 print(error.localizedDescription)
                 return
             }
             
             if success {
-                self.showAlert(title: "Поздравляем!", message: "Вы успешно поделились фотографией")
+                self.showAlert(title: "Congratulations!".localized(),
+                               message: "You have successfully shared the photo".localized())
             }
         }
         present(shareVC, animated: true)
     }
     
-    // MARK: - Handle zooming and pinching
+    // MARK: - Handle zooming and pinching, first tap to show the whole photo then it is allowed to pinch, tap on photo again to return
     
     @objc private func tapToZoomIn(_ sender: UITapGestureRecognizer) {
         guard let viewToZoomIn = sender.view as? PhotoImageView,

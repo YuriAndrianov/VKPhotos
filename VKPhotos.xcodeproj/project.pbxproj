@@ -22,6 +22,9 @@
 		E2A7AB5C28020037009F5445 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7AB5A28020037009F5445 /* PhotoCollectionViewCell.swift */; };
 		E2A7AB5D28020037009F5445 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A7AB5B28020037009F5445 /* PhotoCollectionViewCell.xib */; };
 		E2A7AB662802DCDB009F5445 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7AB642802DCDB009F5445 /* DetailViewController.swift */; };
+		E2A7AB6A2804A285009F5445 /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7AB692804A284009F5445 /* String+localized.swift */; };
+		E2A7AB6D2804AA81009F5445 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A7AB6F2804AA81009F5445 /* Localizable.strings */; };
+		E2A7AB722804B43F009F5445 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7AB712804B43E009F5445 /* CustomError.swift */; };
 		E2E9B14828009765006498BE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E2E9B14728009765006498BE /* .swiftlint.yml */; };
 		E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14B2800A3CA006498BE /* AuthService.swift */; };
 		E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9B14D2800A63C006498BE /* DebugOptions.swift */; };
@@ -49,6 +52,10 @@
 		E2A7AB5A28020037009F5445 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E2A7AB5B28020037009F5445 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E2A7AB642802DCDB009F5445 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E2A7AB692804A284009F5445 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
+		E2A7AB6E2804AA81009F5445 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A7AB702804ABB5009F5445 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2A7AB712804B43E009F5445 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		E2E9B14728009765006498BE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E2E9B14B2800A3CA006498BE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E2E9B14D2800A63C006498BE /* DebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOptions.swift; sourceTree = "<group>"; };
@@ -117,6 +124,7 @@
 				E2E9B1532800B49C006498BE /* PhotosModule */,
 				E2A7AB5F2802C05D009F5445 /* DetailModule */,
 				E2A7AB5E2802BD1C009F5445 /* Cell */,
+				E2A7AB682804A25B009F5445 /* Extensions */,
 				E247D579280095C6005F1827 /* Assets.xcassets */,
 				E247D57B280095C6005F1827 /* LaunchScreen.storyboard */,
 				E247D57E280095C6005F1827 /* Info.plist */,
@@ -149,6 +157,14 @@
 			path = DetailModule;
 			sourceTree = "<group>";
 		};
+		E2A7AB682804A25B009F5445 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2A7AB692804A284009F5445 /* String+localized.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E2E9B14A2800A3B9006498BE /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +190,8 @@
 				E29D3BEA28019DED001E3B87 /* API.swift */,
 				E2E9B14D2800A63C006498BE /* DebugOptions.swift */,
 				E26D8CE22801F1CC00159AD8 /* PhotoImageView.swift */,
+				E2A7AB6F2804AA81009F5445 /* Localizable.strings */,
+				E2A7AB712804B43E009F5445 /* CustomError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -231,6 +249,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E247D564280095C4005F1827;
 			productRefGroup = E247D56E280095C4005F1827 /* Products */;
@@ -250,6 +269,7 @@
 				E2E9B14828009765006498BE /* .swiftlint.yml in Resources */,
 				E247D57D280095C6005F1827 /* LaunchScreen.storyboard in Resources */,
 				E2E9B1502800A713006498BE /* AuthViewController.xib in Resources */,
+				E2A7AB6D2804AA81009F5445 /* Localizable.strings in Resources */,
 				E2A7AB5D28020037009F5445 /* PhotoCollectionViewCell.xib in Resources */,
 				E247D585280095F3005F1827 /* .gitignore in Resources */,
 				E247D57A280095C6005F1827 /* Assets.xcassets in Resources */,
@@ -327,9 +347,11 @@
 				E247D571280095C4005F1827 /* AppDelegate.swift in Sources */,
 				E247D573280095C4005F1827 /* SceneDelegate.swift in Sources */,
 				E26D8CE12801C16D00159AD8 /* PhotoResponse.swift in Sources */,
+				E2A7AB722804B43F009F5445 /* CustomError.swift in Sources */,
 				E26D8CE32801F1CC00159AD8 /* PhotoImageView.swift in Sources */,
 				E2A7AB5C28020037009F5445 /* PhotoCollectionViewCell.swift in Sources */,
 				E2E9B1562800B4BA006498BE /* PhotosViewController.swift in Sources */,
+				E2A7AB6A2804A285009F5445 /* String+localized.swift in Sources */,
 				E2E9B14E2800A63C006498BE /* DebugOptions.swift in Sources */,
 				E29D3BED2801B436001E3B87 /* PhotoFetcher.swift in Sources */,
 				E2E9B14C2800A3CA006498BE /* AuthService.swift in Sources */,
@@ -349,6 +371,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		E2A7AB6F2804AA81009F5445 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2A7AB6E2804AA81009F5445 /* en */,
+				E2A7AB702804ABB5009F5445 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -356,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -417,6 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

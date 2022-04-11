@@ -52,7 +52,7 @@ final class PhotosViewController: UIViewController {
     private func setupNavBar() {
         title = "Mobile Up Gallery"
         view.backgroundColor = .systemBackground
-        let logOutButton = UIBarButtonItem(title: "Выход",
+        let logOutButton = UIBarButtonItem(title: "Log out".localized(),
                                            style: .done,
                                            target: self,
                                            action: #selector(logOutButtonTapped))
@@ -88,20 +88,24 @@ final class PhotosViewController: UIViewController {
     // MARK: - Helpers
     
     private func showAlert(with error: Error) {
-        let alertVC = UIAlertController(title: "Ошибка",
+        let alertVC = UIAlertController(title: "Error".localized(),
                                         message: error.localizedDescription,
                                         preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Ok".localized(), style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
     
     @objc private func logOutButtonTapped() {
         let logOutAlertVC = UIAlertController(title: nil,
-                                              message: "Вы действительно хотите выйти?",
+                                              message: "Are you sure want to log out?".localized(),
                                               preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Да",
+        
+        let cancelAction = UIAlertAction(title: "Cancel".localized(),
+                                         style: .cancel,
+                                         handler: nil)
+        
+        let confirmAction = UIAlertAction(title: "Confirm".localized(),
                                           style: .default) { _ in AuthService.shared.endSession() }
-        let cancelAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
         
         logOutAlertVC.addAction(confirmAction)
         logOutAlertVC.addAction(cancelAction)

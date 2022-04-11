@@ -18,7 +18,10 @@ final class NetworkService: Networking {
     func request(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         let request = URLRequest(url: url)
 
-        guard let dataTask = createDataTask(from: request, completion: completion) else { return }
+        guard let dataTask = createDataTask(from: request, completion: completion) else {
+            let noConnectionError = CustomError.noInternet
+            DispatchQueue.main.async { completion(.failure(noConnectionError)) }
+            return }
         dataTask.resume()
     }
    
@@ -29,7 +32,11 @@ final class NetworkService: Networking {
                 return
             }
             
-            guard let data = data else { return }
+            guard let data = data else {
+                let noDataError = CustomError.noData
+                DispatchQueue.main.async { completion(.failure(noDataError)) }
+                return
+            }
             DispatchQueue.main.async { completion(.success(data)) }
         }
     }
