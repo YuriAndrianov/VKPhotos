@@ -36,5 +36,7 @@
 		<string>vk-share</string>
 		<string>vkauthorize</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>&quot;Please allow access to your gallery to save the photo&quot;</string>
 </dict>
 </plist>

@@ -28,12 +28,10 @@ final class PhotoFetcher: PhotoFetching {
             switch result {
             case .success(let data):
                 guard let decoded = self?.decodeJSON(type: PhotoResponseWrapped.self, from: data) else { return }
-                DispatchQueue.main.async { completion(.success(decoded.response.items)) }
+                completion(.success(decoded.response.items))
             case .failure(let error):
                 print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
+                completion(.failure(error))
             }
         })
     }

@@ -73,6 +73,11 @@ final class DetailViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                          target: self,
+                                          action: #selector(shareButtonTapped(_:)))
+        navigationItem.rightBarButtonItem = shareButton
+        
         // setting title
         guard let photoItems = photoItems,
               let id = id,
@@ -124,7 +129,34 @@ final class DetailViewController: UIViewController {
         let selectedIndexPath = IndexPath(row: idIndex, section: 0)
         
         collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .centeredHorizontally)
-        collectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title,
+                                        message: message,
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    @objc private func shareButtonTapped(_ sender: UIBarButtonItem) {
+        guard let image = photoImage.image else { return }
+        
+        let shareVC = UIActivityViewController(activityItems: [image],
+                                               applicationActivities: nil)
+        shareVC.completionWithItemsHandler = { [weak self] _, success, _, error in
+            guard let self = self else { return }
+            if let error = error {
+                self.showAlert(title: "Ошибка", message: error.localizedDescription)
+                print(error.localizedDescription)
+                return
+            }
+            
+            if success {
+                self.showAlert(title: "Поздравляем!", message: "Вы успешно поделились фотографией")
+            }
+        }
+        present(shareVC, animated: true)
     }
     
     // MARK: - Handle zooming and pinching
@@ -162,7 +194,6 @@ final class DetailViewController: UIViewController {
         zoomingImageView.setImage(image)
         zoomingImageView.contentMode = .scaleAspectFit
         zoomingImageView.isUserInteractionEnabled = true
-        zoomingImageView.clipsToBounds = true
         zoomingImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToZoomOut(_:))))
         zoomingImageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(pinchToZoom(_:))))
         keyWindow.addSubview(zoomingImageView)
@@ -188,7 +219,6 @@ final class DetailViewController: UIViewController {
     @objc private func tapToZoomOut(_ sender: UITapGestureRecognizer) {
         guard let viewToZoomOut = sender.view as? PhotoImageView,
               let startingFrame = startingFrame else { return }
-        viewToZoomOut.clipsToBounds = true
         
         UIView.animate(withDuration: 0.2,
                        delay: 0,
@@ -214,7 +244,7 @@ final class DetailViewController: UIViewController {
                                          y: 0,
                                          width: startingFrame.width * scale,
                                          height: startingFrame.height * scale)
-            viewToZoomOut.center = view.center
+            viewToZoomOut.center = sender.location(in: view)
         }
     }
     

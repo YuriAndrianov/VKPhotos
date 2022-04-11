@@ -41,12 +41,12 @@ final class AuthService: NSObject {
     
     func wakeUpSession() {
         VKSdk.wakeUpSession(scope) { [weak self] state, error in
-            guard error == nil else {
-                print(error?.localizedDescription as Any)
+            guard let self = self else { return }
+            
+            if let error = error {
+                self.delegate?.authorizationDidFail(with: error)
                 return
             }
-            
-            guard let self = self else { return }
             
             switch state {
             case .initialized: self.delegate?.authorizationStart()

@@ -77,10 +77,8 @@ final class PhotosViewController: UIViewController {
             
             switch result {
             case .success(let items):
-                DispatchQueue.main.async {
-                    self.photoItems = items
-                    self.collectionView.reloadData()
-                }
+                self.photoItems = items
+                self.collectionView.reloadData()
             case .failure(let error):
                 self.showAlert(with: error)
             }

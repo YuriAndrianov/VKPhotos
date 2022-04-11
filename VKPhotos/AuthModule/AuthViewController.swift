@@ -23,4 +23,5 @@ final class AuthViewController: UIViewController {
     @IBAction func enterVKButtonTapped(_ sender: Any) {
         authService?.startAuthorization()
     }
+    
 }

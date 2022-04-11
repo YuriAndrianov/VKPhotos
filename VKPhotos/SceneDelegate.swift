@@ -58,6 +58,8 @@ extension SceneDelegate: AuthServiceDelegate {
     }
     
     func authorizationDidFail(with error: Error) {
+        print(error.localizedDescription)
+        
         let alertVC = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
         
         alertVC.addAction(UIAlertAction(title: "Ок", style: .default, handler: { [weak self] _ in
